@@ -64,13 +64,10 @@ let importJob = async () => {
      })
 
      let jobId = importJob.id
-     var jobStatus = {}
      while (true) {
-          jobStatus = await importExportResource.getImport({ jobId: jobId })
+          const jobStatus = await importExportResource.getImport({ jobId: jobId })
           console.log(jobStatus)
-          if (jobStatus.isComplete == true) {
-               break;
-          }
+          if (jobStatus.every(job => job.isComplete)) break;
           console.log("Waiting...")
           await helpers.wait(2000)
      }
