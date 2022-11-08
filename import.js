@@ -66,7 +66,7 @@ let importJob = async () => {
      let jobId = importJob.id
      var jobStatus = {}
      while (true) {
-          jobStatus = await importExportResource.getImport({ jobId: jobId })
+          jobStatus = await importExportResource.getImport({ id: jobId })
           console.log(jobStatus)
           if (jobStatus.isComplete == true) {
                break;
